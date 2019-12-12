@@ -1,3 +1,9 @@
+const areCoordinatesEqual = function(LineOnePoint, LineTwoPoint) {
+	return (
+		LineOnePoint.x === LineTwoPoint.x && LineOnePoint.y === LineTwoPoint.y
+	);
+};
+
 class Line {
 	constructor(x1, y1, x2, y2) {
 		this.p1 = {
@@ -10,14 +16,12 @@ class Line {
 		};
 	}
 	toString() {
-		return `x1:${this.p1.x} y1:${this.p1.y}\nx2:${this.p2.x} y2:${this.p2.y}`;
+		return `Line\nx1:${this.p1.x} y1:${this.p1.y}\nx2:${this.p2.x} y2:${this.p2.y}`;
 	}
 
 	isEqualTo(otherLine) {
-		let isPointOneEqual =
-			this.p1.x === otherLine.p1.x && this.p1.y === otherLine.p1.y;
-		let isPointTwoEqual =
-			this.p2.x === otherLine.p2.x && this.p2.y === otherLine.p2.y;
+		let isPointOneEqual = areCoordinatesEqual(this.p1, otherLine.p1);
+		let isPointTwoEqual = areCoordinatesEqual(this.p2, otherLine.p2);
 		return isPointOneEqual && isPointTwoEqual;
 	}
 }
