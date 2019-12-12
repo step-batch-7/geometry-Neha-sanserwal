@@ -5,15 +5,9 @@ const isTypeEqual = function(obj1, obj2) {
 	return obj1.constructor.name === obj2.constructor.name;
 };
 class Line {
-	constructor(x1, y1, x2, y2) {
-		this.endA = {
-			x: x1,
-			y: y1
-		};
-		this.endB = {
-			x: x2,
-			y: y2
-		};
+	constructor(pointA, pointB) {
+		this.endA = pointA;
+		this.endB = pointB;
 	}
 	toString() {
 		let type = this.constructor.name;
