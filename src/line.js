@@ -16,7 +16,7 @@ class Line {
 		};
 	}
 	toString() {
-		return `Line\nx1:${this.p1.x} y1:${this.p1.y}\nx2:${this.p2.x} y2:${this.p2.y}`;
+		return `${this.constructor.name} (${this.p1.x},${this.p1.y}), (${this.p2.x},${this.p2.y})`;
 	}
 
 	isEqualTo(otherLine) {
