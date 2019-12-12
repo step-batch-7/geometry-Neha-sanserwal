@@ -1,4 +1,4 @@
-const areCoordinatesEqual = function(LineOnePoint, LineTwoPoint) {
+const arePointsEqual = function(LineOnePoint, LineTwoPoint) {
 	return (
 		LineOnePoint.x === LineTwoPoint.x && LineOnePoint.y === LineTwoPoint.y
 	);
@@ -20,8 +20,8 @@ class Line {
 	}
 
 	isEqualTo(otherLine) {
-		let isPointOneEqual = areCoordinatesEqual(this.p1, otherLine.p1);
-		let isPointTwoEqual = areCoordinatesEqual(this.p2, otherLine.p2);
+		let isPointOneEqual = arePointsEqual(this.p1, otherLine.p1);
+		let isPointTwoEqual = arePointsEqual(this.p2, otherLine.p2);
 		return isPointOneEqual && isPointTwoEqual;
 	}
 }
