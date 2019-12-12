@@ -18,5 +18,13 @@ describe("Line", function() {
 			let line2 = new Line(2, 2, 1, 2);
 			assert.ok(!line1.isEqualTo(line2));
 		});
+		it("should invalidate if the lines are not instance of same class", function() {
+			let line1 = new Line(1, 2, 1, 2);
+			let line2 = { endA: { x: 2, y: 2 }, endB: { x: 1, y: 2 } };
+			assert.ok(!line1.isEqualTo(line2));
+			line1 = new Line(1, 2, 1, 2);
+			line2 = "a";
+			assert.ok(!line1.isEqualTo(line2));
+		});
 	});
 });
