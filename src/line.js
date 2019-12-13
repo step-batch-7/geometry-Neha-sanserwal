@@ -7,8 +7,8 @@ const isTypeEqual = function(obj1, obj2) {
 
 class Line {
 	constructor(pointA, pointB) {
-		this.endA = { ...pointA };
-		this.endB = { ...pointB };
+		this.endA = { x: pointA.x, y: pointA.y };
+		this.endB = { x: pointB, y: pointB.y };
 	}
 	toString() {
 		let type = this.constructor.name;
