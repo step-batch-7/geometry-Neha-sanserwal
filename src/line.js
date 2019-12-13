@@ -4,10 +4,11 @@ const arePointsEqual = function(pointA, pointB) {
 const isTypeEqual = function(obj1, obj2) {
 	return obj1.constructor.name === obj2.constructor.name;
 };
+
 class Line {
 	constructor(pointA, pointB) {
-		this.endA = pointA;
-		this.endB = pointB;
+		this.endA = { ...pointA };
+		this.endB = { ...pointB };
 	}
 	toString() {
 		let type = this.constructor.name;

@@ -1,5 +1,6 @@
 const assert = require("assert");
 const Line = require("../src/line.js").Line;
+
 describe("Line", function() {
 	describe("toString", function() {
 		it("should give the string representation of line points", function() {
@@ -7,6 +8,7 @@ describe("Line", function() {
 			assert.strictEqual(line.toString(), "Line (1,2), (1,2)");
 		});
 	});
+
 	describe("isEqualTo", function() {
 		it("should validate if the lines has same segments", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
