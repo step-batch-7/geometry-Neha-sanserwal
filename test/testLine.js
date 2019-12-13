@@ -25,8 +25,12 @@ describe("Line", function() {
 			let line2 = { endA: { x: 2, y: 2 }, endB: { x: 1, y: 2 } };
 			assert.ok(!line1.isEqualTo(line2));
 			line1 = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
-			line2 = "a";
-			assert.ok(!line1.isEqualTo(line2));
+		});
+	});
+	describe("length", function() {
+		it("should calculate for line of having same end points", function() {
+			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
+			assert.strictEqual(line.length, 0);
 		});
 	});
 });
