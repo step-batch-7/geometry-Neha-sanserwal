@@ -63,5 +63,20 @@ describe("Line", function() {
 			let line = new Line({ x: 2, y: 4 }, { x: 3, y: 4 });
 			assert.strictEqual(line.slope, 0);
 		});
+		it("should calculate for vertical line ", function() {
+			let line = new Line({ x: 2, y: 4 }, { x: 2, y: 3 });
+			assert.strictEqual(line.slope, -Infinity);
+
+			line = new Line({ x: 2, y: 3 }, { x: 2, y: 4 });
+			assert.strictEqual(line.slope, Infinity);
+		});
+		it("should calculate for line that goes uphill", function() {
+			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+			assert.strictEqual(line.slope, 1);
+		});
+		it("should calculate for line that goes downhill", function() {
+			let line = new Line({ x: 4, y: 2 }, { x: 1, y: 5 });
+			assert.strictEqual(line.slope, -1);
+		});
 	});
 });
