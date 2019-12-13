@@ -58,4 +58,10 @@ describe("Line", function() {
 			assert.ok(!line1.isParallelTo(line2));
 		});
 	});
+	describe("slope", function() {
+		it("should calculate for horizontal line", function() {
+			let line = new Line({ x: 2, y: 4 }, { x: 3, y: 4 });
+			assert.strictEqual(line.slope, 0);
+		});
+	});
 });
