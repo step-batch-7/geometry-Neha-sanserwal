@@ -18,19 +18,18 @@ class Line {
 			arePointsEqual(this.endB, other.endB)
 		);
 	}
+	get slope() {
+		return (this.endB.y - this.endA.y) / (this.endB.x - this.endA.x);
+	}
 
 	isParallelTo(other) {
-		return this.slope === other.slope;
+		return other instanceof Line && this.slope === other.slope;
 	}
 
 	get length() {
 		let diffOfXs = this.endB.x - this.endA.x;
 		let diffOfYs = this.endB.y - this.endA.y;
 		return Math.sqrt(Math.pow(diffOfXs, 2) + Math.pow(diffOfYs, 2));
-	}
-
-	get slope() {
-		return (this.endB.y - this.endA.y) / (this.endB.x - this.endA.x);
 	}
 }
 exports.Line = Line;
