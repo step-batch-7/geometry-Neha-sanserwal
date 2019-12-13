@@ -42,10 +42,20 @@ describe("Line", function() {
 		});
 	});
 	describe("isParallelTo", function() {
-		it("should invalidate if lines are parallel to each other", function() {
+		it("should validate if lines are parallel to each other", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
 			let line2 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
 			assert.ok(line1.isParallelTo(line2));
+		});
+		it("should invalidate if lines are perpendicular to each other", function() {
+			let line1 = new Line({ x: -3, y: -2 }, { x: 1, y: -2 });
+			let line2 = new Line({ x: 3, y: 2 }, { x: -1, y: -2 });
+			assert.ok(!line1.isParallelTo(line2));
+		});
+		it("should invalidate if lines intersect each other", function() {
+			let line1 = new Line({ x: 3, y: 2 }, { x: 1, y: 3 });
+			let line2 = new Line({ x: 3.2, y: 2 }, { x: -1, y: 1 });
+			assert.ok(!line1.isParallelTo(line2));
 		});
 	});
 });
