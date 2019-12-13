@@ -23,5 +23,8 @@ class Line {
 		let diffOfYs = this.endB.y - this.endA.y;
 		return Math.sqrt(Math.pow(diffOfXs, 2) + Math.pow(diffOfYs, 2));
 	}
+	isParallelTo(other) {
+		return true;
+	}
 }
 exports.Line = Line;

@@ -41,4 +41,11 @@ describe("Line", function() {
 			assert.approximately(line.length, 0.96, 0.01);
 		});
 	});
+	describe("isParallelTo", function() {
+		it("should invalidate if lines are parallel to each other", function() {
+			let line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
+			let line2 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
+			assert.ok(line1.isParallelTo(line2));
+		});
+	});
 });
