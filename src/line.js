@@ -21,7 +21,7 @@ class Line {
 	get length() {
 		let diffOfXs = this.endB.x - this.endA.x;
 		let diffOfYs = this.endB.y - this.endA.y;
-		return Math.sqrt(diffOfXs ^ (2 + diffOfYs) ^ 2);
+		return Math.sqrt(Math.pow(diffOfXs, 2) + Math.pow(diffOfYs, 2));
 	}
 }
 exports.Line = Line;

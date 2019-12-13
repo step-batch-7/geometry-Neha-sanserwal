@@ -28,7 +28,7 @@ describe("Line", function() {
 		});
 	});
 	describe("length", function() {
-		it("should calculate for line of having same end points", function() {
+		it("should calculate for line having same end points", function() {
 			const line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
 			assert.strictEqual(line.length, 0);
 		});
