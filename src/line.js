@@ -4,6 +4,10 @@ const arePointsEqual = function(pointA, pointB) {
 	return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
+const isNumInRange = function(num, start, end) {
+	return num >= start && num <= end;
+};
+
 const intercept = function(x, y, slope) {
 	return y - slope * x;
 };
@@ -53,11 +57,17 @@ class Line {
 	}
 
 	findY(x) {
+		if (!isNumInRange(x, this.endA.x, this.endB.x)) {
+			return NaN;
+		}
 		let c = intercept(this.endA.x, this.endA.y, this.slope);
 		return this.slope * x + c;
 	}
 
 	findX(y) {
+		if (!isNumInRange(y, this.endA.y, this.endB.y)) {
+			return NaN;
+		}
 		let c = intercept(this.endA.x, this.endA.y, this.slope);
 		return (y - c) / this.slope;
 	}

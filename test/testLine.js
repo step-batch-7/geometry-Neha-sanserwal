@@ -93,21 +93,29 @@ describe("Line", function() {
 	describe("findY", function() {
 		it("should calculate y for zero value of x", function() {
 			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
-			assert.strictEqual(line.findY(0), 1);
+			assert.strictEqual(line.findY(2), 3);
 		});
 		it("should calculate y for greater value than 0 of x", function() {
 			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
-			assert.strictEqual(line.findY(2), 3);
+			assert.strictEqual(line.findY(3), 4);
+		});
+		it("should not calculate y if given point is not on line", function() {
+			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+			assert.isNaN(line.findY(5));
 		});
 	});
 	describe("findX", function() {
 		it("should calculate x for zero value of y", function() {
 			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
-			assert.strictEqual(line.findX(0), -1);
+			assert.strictEqual(line.findX(3), 2);
 		});
 		it("should calculate x for greater value than 0 of y", function() {
 			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
 			assert.strictEqual(line.findX(2), 1);
+		});
+		it("should not calculate x if given point is not on line", function() {
+			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+			assert.isNaN(line.findX(1));
 		});
 	});
 });
