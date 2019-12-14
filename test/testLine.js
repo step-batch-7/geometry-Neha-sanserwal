@@ -66,6 +66,9 @@ describe("Line", function() {
 			let line1 = new Line({ x: 3, y: 2 }, { x: 1, y: 3 });
 			let line2 = new Line({ x: 3.2, y: 2 }, { x: -1, y: 1 });
 			assert.ok(!line1.isParallelTo(line2));
+			line1 = new Line({ x: 1, y: 1 }, { x: 2, y: 2 });
+			line2 = new Line({ x: 3, y: 3 }, { x: 4, y: 4 });
+			assert.ok(!line1.isParallelTo(line2));
 		});
 	});
 	describe("slope", function() {
@@ -87,6 +90,16 @@ describe("Line", function() {
 		it("should calculate for line that goes downhill", function() {
 			let line = new Line({ x: 4, y: 2 }, { x: 1, y: 5 });
 			assert.strictEqual(line.slope, -1);
+		});
+	});
+	describe("findY", function() {
+		it("should calculate y for zero value of x", function() {
+			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+			assert.strictEqual(line.findY(0), 1);
+		});
+		it("should calculate y for greater value than 0 of x", function() {
+			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+			assert.strictEqual(line.findY(2), 3);
 		});
 	});
 });

@@ -44,5 +44,10 @@ class Line {
 		let diffOfYs = this.endB.y - this.endA.y;
 		return Math.sqrt(Math.pow(diffOfXs, 2) + Math.pow(diffOfYs, 2));
 	}
+
+	findY(x) {
+		let YIntercept = intercept(this.endA.x, this.endA.y, this.slope);
+		return this.slope * x + YIntercept;
+	}
 }
 exports.Line = Line;
