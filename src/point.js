@@ -5,7 +5,7 @@ class Point {
 		this.y = y;
 	}
 	toString() {
-		return `Point: (${this.x},${this.y})`;
+		return `[Point @(${this.x},${this.y})]`;
 	}
 }
 exports.Point = Point;

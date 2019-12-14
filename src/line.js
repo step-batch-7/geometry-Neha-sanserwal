@@ -1,3 +1,5 @@
+const Point = require("./point.js").Point;
+
 const arePointsEqual = function(pointA, pointB) {
 	return pointA.x === pointB.x && pointA.y === pointB.y;
 };
@@ -5,14 +7,13 @@ const arePointsEqual = function(pointA, pointB) {
 const yIntercept = function(x, y, slope) {
 	return y - slope * x;
 };
-
 class Line {
 	constructor(pointA, pointB) {
-		this.endA = { x: pointA.x, y: pointA.y };
-		this.endB = { x: pointB.x, y: pointB.y };
+		this.endA = new Point(pointA.x, pointA.y);
+		this.endB = new Point(pointB.x, pointB.y);
 	}
 	toString() {
-		return `Line (${this.endA.x},${this.endA.y}), (${this.endB.x},${this.endB.y})`;
+		return `[Line (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
 	}
 
 	isEqualTo(other) {

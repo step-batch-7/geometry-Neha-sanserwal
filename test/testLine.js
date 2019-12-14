@@ -5,7 +5,7 @@ describe("Line", function() {
 	describe("toString", function() {
 		it("should give the string representation of line points", function() {
 			let line = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
-			assert.strictEqual(line.toString(), "Line (1,2), (1,2)");
+			assert.strictEqual(line.toString(), "[Line (1,2) to (1,2)]");
 		});
 	});
 
@@ -51,6 +51,9 @@ describe("Line", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
 			let line2 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
 			assert.ok(!line1.isParallelTo(line2));
+			line1 = new Line({ x: 0, y: 1 }, { x: 0, y: 2 });
+			line2 = new Line({ x: 3, y: 3 }, { x: 4, y: 4 });
+			assert.ok(!line1.isParallelTo(line2));
 		});
 		it("should invalidate if other is not line", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
@@ -65,9 +68,6 @@ describe("Line", function() {
 		it("should invalidate if lines intersect each other", function() {
 			let line1 = new Line({ x: 3, y: 2 }, { x: 1, y: 3 });
 			let line2 = new Line({ x: 3.2, y: 2 }, { x: -1, y: 1 });
-			assert.ok(!line1.isParallelTo(line2));
-			line1 = new Line({ x: 1, y: 1 }, { x: 2, y: 2 });
-			line2 = new Line({ x: 3, y: 3 }, { x: 4, y: 4 });
 			assert.ok(!line1.isParallelTo(line2));
 		});
 	});
