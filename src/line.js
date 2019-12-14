@@ -11,6 +11,7 @@ const isNumInRange = function(num, start, end) {
 const intercept = function(x, y, slope) {
 	return y - slope * x;
 };
+
 class Line {
 	constructor(pointA, pointB) {
 		this.endA = new Point(pointA.x, pointA.y);
@@ -83,7 +84,7 @@ class Line {
 	hasPoint(point) {
 		let isXValid = isNumInRange(point.x, this.endA.x, this.endB.x);
 		let isYValid = isNumInRange(point.y, this.endA.y, this.endB.y);
-		return isXValid && isYValid;
+		return point instanceof Point && isXValid && isYValid;
 	}
 }
 exports.Line = Line;

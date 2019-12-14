@@ -148,5 +148,10 @@ describe("Line", function() {
 			const point = new Point(3, 2);
 			assert.ok(line.hasPoint(point));
 		});
+		it("should invalidate if the point is not instance of point class", function() {
+			const line = new Line({ x: 2, y: 2 }, { x: 4, y: 5 });
+			const point = { x: 3, y: 2 };
+			assert.ok(!line.hasPoint(point));
+		});
 	});
 });
