@@ -2,7 +2,7 @@ const arePointsEqual = function(pointA, pointB) {
 	return pointA.x === pointB.x && pointA.y === pointB.y;
 };
 
-const intercept = function(x, y, slope) {
+const yIntercept = function(x, y, slope) {
 	return y - slope * x;
 };
 
@@ -30,8 +30,8 @@ class Line {
 		if (!other instanceof Line) {
 			return false;
 		}
-		const lineAIntercept = intercept(this.endA.x, this.endA.y, this.slope);
-		const lineBIntercept = intercept(
+		const lineAIntercept = yIntercept(this.endA.x, this.endA.y, this.slope);
+		const lineBIntercept = yIntercept(
 			other.endA.x,
 			other.endA.y,
 			other.slope
@@ -46,7 +46,7 @@ class Line {
 	}
 
 	findY(x) {
-		let YIntercept = intercept(this.endA.x, this.endA.y, this.slope);
+		let YIntercept = yIntercept(this.endA.x, this.endA.y, this.slope);
 		return this.slope * x + YIntercept;
 	}
 }
