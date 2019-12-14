@@ -42,10 +42,15 @@ describe("Line", function() {
 		});
 	});
 	describe("isParallelTo", function() {
-		it("should validate if lines are parallel to each other", function() {
+		it("should validate if lines have same slope and different intercept ", function() {
+			let line1 = new Line({ x: 0, y: 2 }, { x: 2, y: 0 });
+			let line2 = new Line({ x: 0, y: 3 }, { x: 3, y: 0 });
+			assert.ok(line1.isParallelTo(line2));
+		});
+		it("should invalidate if lines have same slope and intercept ", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
 			let line2 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
-			assert.ok(line1.isParallelTo(line2));
+			assert.ok(!line1.isParallelTo(line2));
 		});
 		it("should invalidate if other is not line", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
