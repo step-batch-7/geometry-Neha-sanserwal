@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const Line = require("../src/line.js").Line;
+const Point = require("../src/point.js").Point;
 
 describe("Line", function() {
 	describe("toString", function() {
@@ -134,6 +135,18 @@ describe("Line", function() {
 				{ endA: { x: -1, y: 0 }, endB: { x: -4, y: -5 } }
 			];
 			assert.deepStrictEqual(line.split(), expected);
+		});
+	});
+	describe("hasPoint", function() {
+		it("should validate if the point is located on line segment", function() {
+			const line = new Line({ x: 2, y: 2 }, { x: 4, y: 5 });
+			const point = new Point(3, 2);
+			assert.ok(line.hasPoint(point));
+		});
+		it("should invalidate if the point is not located on line segment", function() {
+			const line = new Line({ x: 2, y: 2 }, { x: 4, y: 5 });
+			const point = new Point(3, 2);
+			assert.ok(line.hasPoint(point));
 		});
 	});
 });

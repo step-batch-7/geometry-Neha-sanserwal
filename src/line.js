@@ -80,5 +80,10 @@ class Line {
 		const line2 = new Line({ x: midX, y: midY }, this.endB);
 		return [line1, line2];
 	}
+	hasPoint(point) {
+		let isXValid = isNumInRange(point.x, this.endA.x, this.endB.x);
+		let isYValid = isNumInRange(point.y, this.endA.y, this.endB.y);
+		return isXValid && isYValid;
+	}
 }
 exports.Line = Line;
