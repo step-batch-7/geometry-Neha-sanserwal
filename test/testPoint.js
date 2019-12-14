@@ -24,20 +24,31 @@ describe("Point", function() {
 		});
 	});
 	describe("isEqualTo", function() {
-		it("should validate is x and y coordinates of both points are equal", function() {
+		it("should validate if x and y coordinates of both points are equal", function() {
 			let point1 = new Point(1, 2);
 			let point2 = new Point(1, 2);
 			assert.ok(point1.isEqualTo(point2));
 		});
-		it("should validate is x coordinates of both points are equal but not y", function() {
+		it("should invalidate if x coordinates of both points are equal but not y", function() {
 			let point1 = new Point(1, 2);
 			let point2 = new Point(1, 3);
 			assert.ok(!point1.isEqualTo(point2));
 		});
-		it("should validate is y coordinates of both points are equal but not x", function() {
+		it("should invalidate if y coordinates of both points are equal but not x", function() {
 			let point1 = new Point(1, 2);
 			let point2 = new Point(1, 3);
 			assert.ok(!point1.isEqualTo(point2));
+		});
+		it("should invalidate if other is not a point", function() {
+			let point1 = new Point(1, 2);
+			let point2 = { x: 1, y: 3 };
+			assert.ok(!point1.isEqualTo(point2));
+		});
+	});
+	describe("clone", function() {
+		let point = new Point(1, 2);
+		it("should given a copy of the given point", function() {
+			assert.deepStrictEqual(point.clone(), { x: 1, y: 2 });
 		});
 	});
 });
