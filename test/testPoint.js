@@ -23,4 +23,21 @@ describe("Point", function() {
 			assert.throws(callBackErr, "callback is not a function");
 		});
 	});
+	describe("isEqualTo", function() {
+		it("should validate is x and y coordinates of both points are equal", function() {
+			let point1 = new Point(1, 2);
+			let point2 = new Point(1, 2);
+			assert.ok(point1.isEqualTo(point2));
+		});
+		it("should validate is x coordinates of both points are equal but not y", function() {
+			let point1 = new Point(1, 2);
+			let point2 = new Point(1, 3);
+			assert.ok(!point1.isEqualTo(point2));
+		});
+		it("should validate is y coordinates of both points are equal but not x", function() {
+			let point1 = new Point(1, 2);
+			let point2 = new Point(1, 3);
+			assert.ok(!point1.isEqualTo(point2));
+		});
+	});
 });
