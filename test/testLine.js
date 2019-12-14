@@ -23,8 +23,6 @@ describe("Line", function() {
 		it("should invalidate if the lines are not an instance of the same class", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
 			let line2 = { endA: { x: 2, y: 2 }, endB: { x: 1, y: 2 } };
-			assert.ok(!line1.isEqualTo(line2));
-			line1 = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
 		});
 	});
 	describe("length", function() {
@@ -100,6 +98,16 @@ describe("Line", function() {
 		it("should calculate y for greater value than 0 of x", function() {
 			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
 			assert.strictEqual(line.findY(2), 3);
+		});
+	});
+	describe("findX", function() {
+		it("should calculate x for zero value of y", function() {
+			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+			assert.strictEqual(line.findX(0), -1);
+		});
+		it("should calculate x for greater value than 0 of y", function() {
+			let line = new Line({ x: 1, y: 2 }, { x: 4, y: 5 });
+			assert.strictEqual(line.findX(2), 1);
 		});
 	});
 });
