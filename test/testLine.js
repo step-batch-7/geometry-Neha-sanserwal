@@ -118,4 +118,14 @@ describe("Line", function() {
 			assert.isNaN(line.findX(1));
 		});
 	});
+	describe("split", function() {
+		it("should give two line of equal length if both line(p1,p2)>0", function() {
+			let line = new Line({ x: 2, y: 2 }, { x: 4, y: 5 });
+			let expected = [
+				{ endA: { x: 2, y: 2 }, endB: { x: 1, y: 0 } },
+				{ endA: { x: 1, y: 0 }, endB: { x: 4, y: 5 } }
+			];
+			assert.deepStrictEqual(line.split(), expected);
+		});
+	});
 });
