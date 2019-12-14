@@ -21,7 +21,9 @@ class Line {
 	}
 
 	isEqualTo(other) {
-		if (!other instanceof Line) return false;
+		if (!other instanceof Line) {
+			return false;
+		}
 		return (
 			arePointsEqual(this.endA, other.endA) &&
 			arePointsEqual(this.endB, other.endB)
