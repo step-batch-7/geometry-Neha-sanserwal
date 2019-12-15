@@ -14,10 +14,10 @@ class Point {
 		return callback(this.x, this.y);
 	}
 	isEqualTo(other) {
-		if (!other instanceof Point) {
-			return false;
+		if (other instanceof Point) {
+			return this.x === other.x && this.y === other.y;
 		}
-		return this.x === other.x && this.y === other.y;
+		return false;
 	}
 	clone() {
 		return new Point(this.x, this.y);

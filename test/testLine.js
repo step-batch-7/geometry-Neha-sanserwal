@@ -24,6 +24,7 @@ describe("Line", function() {
 		it("should invalidate if the lines are not an instance of the same class", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 1, y: 2 });
 			let line2 = { endA: { x: 2, y: 2 }, endB: { x: 1, y: 2 } };
+			assert.ok(!line1.isEqualTo(line2));
 		});
 	});
 	describe("length", function() {
