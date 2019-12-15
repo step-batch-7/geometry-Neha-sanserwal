@@ -36,18 +36,15 @@ class Line {
 
 	isParallelTo(other) {
 		if (other instanceof Line) {
-			const lineAIntercept = intercept(
-				this.endA.x,
-				this.endA.y,
-				this.slope
-			);
-			const lineBIntercept = intercept(
+			let thisIntercept = intercept(this.endA.x, this.endA.y, this.slope);
+			let otherIntercept = intercept(
 				other.endA.x,
 				other.endA.y,
 				other.slope
 			);
 			return (
-				lineAIntercept != lineBIntercept && this.slope === other.slope
+				!(thisIntercept === otherIntercept) &&
+				this.slope === other.slope
 			);
 		}
 		return false;
@@ -82,8 +79,8 @@ class Line {
 		return [line1, line2];
 	}
 	hasPoint(point) {
-		let isXValid = isNumInRange(point.x, this.endA.x, this.endB.x);
-		let isYValid = isNumInRange(point.y, this.endA.y, this.endB.y);
+		let isXValid = point.x === this.findX(point.y);
+		let isYValid = point.y === this.findY(point.x);
 		return point instanceof Point && isXValid && isYValid;
 	}
 }

@@ -139,14 +139,17 @@ describe("Line", function() {
 	});
 	describe("hasPoint", function() {
 		it("should validate if the point is located on line segment", function() {
-			const line = new Line({ x: 2, y: 2 }, { x: 4, y: 5 });
-			const point = new Point(3, 2);
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			const point = new Point(2, 2);
 			assert.ok(line.hasPoint(point));
 		});
 		it("should invalidate if the point is not located on line segment", function() {
-			const line = new Line({ x: 2, y: 2 }, { x: 4, y: 5 });
-			const point = new Point(3, 2);
-			assert.ok(line.hasPoint(point));
+			let line = new Line({ x: 2, y: 2 }, { x: 4, y: 5 });
+			let point = new Point(0, 2);
+			assert.ok(!line.hasPoint(point));
+			line = new Line({ x: 0, y: 0 }, { x: 5, y: 5 });
+			point = new Point(2, 3);
+			assert.ok(!line.hasPoint(point));
 		});
 		it("should invalidate if the point is not instance of point class", function() {
 			const line = new Line({ x: 2, y: 2 }, { x: 4, y: 5 });
