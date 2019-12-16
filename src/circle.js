@@ -7,8 +7,11 @@ class Circle {
 	toString() {
 		return `[Circle @(${this.point.x},${this.point.y}) radius ${this.radius}]`;
 	}
-	isEqualTo() {
-		return true;
+	isEqualTo(other) {
+		if (other instanceof Circle) {
+			return this.radius === other.radius;
+		}
+		return false;
 	}
 }
 exports.Circle = Circle;
