@@ -13,5 +13,8 @@ class Circle {
 		}
 		return false;
 	}
+	get area() {
+		return 0;
+	}
 }
 exports.Circle = Circle;

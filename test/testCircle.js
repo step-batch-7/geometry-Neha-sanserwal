@@ -27,4 +27,10 @@ describe("Circle", function() {
 			assert.ok(!circle1.isEqualTo(circle2));
 		});
 	});
+	describe("area", function() {
+		it("should give area of circle having radius zero ", function() {
+			let circle = new Circle({ x: 0, y: 0 }, 5);
+			assert.strictEqual(circle.area, 0);
+		});
+	});
 });
