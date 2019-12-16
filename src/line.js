@@ -12,6 +12,13 @@ const intercept = function(x, y, slope) {
 	return y - slope * x;
 };
 
+const findPointFrom = function(point, distance, slope) {
+	let theta = Math.atan(slope);
+	let newX = point.x + distance * Math.cos(theta).toFixed(2);
+	let newY = point.y + distance * Math.sin(theta).toFixed(2);
+	return { x: newX, y: newY };
+};
+
 class Line {
 	constructor(pointA, pointB) {
 		this.endA = new Point(pointA.x, pointA.y);
@@ -86,20 +93,18 @@ class Line {
 	findPointFromStart(distance) {
 		if (typeof distance === "number") {
 			let slope = this.slope;
-			let theta = Math.atan(slope);
-			let x = this.endA.x + distance * Math.cos(theta).toFixed(2);
-			let y = this.endA.x + distance * Math.sin(theta).toFixed(2);
-			return new Point(x, y);
+			let start = { x: this.endA.x, y: this.endA.y };
+			let point = findPointFrom(start, distance, slope);
+			return new Point(point.x, point.y);
 		}
 		return NaN;
 	}
 	findPointFromEnd(distance) {
 		if (typeof distance === "number") {
 			let slope = this.slope;
-			let theta = Math.atan(slope);
-			let x = this.endB.x + distance * Math.cos(theta).toFixed(2);
-			let y = this.endB.x + distance * Math.sin(theta).toFixed(2);
-			return new Point(x, y);
+			let end = { x: this.endB.x, y: this.endB.y };
+			let point = findPointFrom(end, distance, slope);
+			return new Point(point.x, point.y);
 		}
 		return NaN;
 	}
