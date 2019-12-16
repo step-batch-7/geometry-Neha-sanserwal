@@ -23,7 +23,12 @@ class Point {
 		return new Point(this.x, this.y);
 	}
 	findDistanceTo(other) {
-		return 0;
+		if (other instanceof Point) {
+			let XsDiff = other.x - this.x;
+			let YsDiff = other.y - this.y;
+			return Math.sqrt(Math.pow(XsDiff, 2) + Math.pow(YsDiff, 2));
+		}
+		return NaN;
 	}
 }
 exports.Point = Point;

@@ -57,5 +57,20 @@ describe("Point", function() {
 			let point2 = new Point(1, 2);
 			assert.strictEqual(point1.findDistanceTo(point2), 0);
 		});
+		it("should give distance between the points not having same coordinates", function() {
+			let point1 = new Point(0, 2);
+			let point2 = new Point(1, 2);
+			assert.strictEqual(point1.findDistanceTo(point2), 1);
+		});
+		it("should give distance between the points having real number coordinates", function() {
+			let point1 = new Point(0.3, 2.5);
+			let point2 = new Point(1.0, 2.1);
+			assert.isAtLeast(point1.findDistanceTo(point2), 0.806);
+		});
+		it("should give NaN if other is not a point", function() {
+			let point1 = new Point(0.3, 2.5);
+			let point2 = [1.0, 2.1];
+			assert.isNaN(point1.findDistanceTo(point2));
+		});
 	});
 });
