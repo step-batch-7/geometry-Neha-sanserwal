@@ -158,4 +158,10 @@ describe("Line", function() {
 			assert.ok(!line.hasPoint(point));
 		});
 	});
+	describe("findPointFromStart", function() {
+		it("should return start point of the line if distance is zero", function() {
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.deepStrictEqual(line.findPointFromStart(0), { x: 1, y: 1 });
+		});
+	});
 });

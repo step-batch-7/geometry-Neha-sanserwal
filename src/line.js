@@ -83,5 +83,8 @@ class Line {
 		let isYValid = point.y === this.findY(point.x);
 		return point instanceof Point && isXValid && isYValid;
 	}
+	findPointFromStart(distance) {
+		return new Point(this.endA.x, this.endA.y);
+	}
 }
 exports.Line = Line;
