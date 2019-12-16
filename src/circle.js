@@ -21,6 +21,9 @@ class Circle {
 		return 2 * Math.PI * this.radius;
 	}
 	hasPoint(other) {
+		if (!other instanceof Point) {
+			return false;
+		}
 		return this.point.findDistanceTo(other) === this.radius;
 	}
 }
