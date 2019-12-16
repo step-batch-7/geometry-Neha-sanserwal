@@ -7,5 +7,8 @@ class Circle {
 	toString() {
 		return `[Circle @(${this.point.x},${this.point.y}) radius ${this.radius}]`;
 	}
+	isEqualTo() {
+		return true;
+	}
 }
 exports.Circle = Circle;
