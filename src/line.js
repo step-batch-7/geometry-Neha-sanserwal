@@ -29,13 +29,13 @@ class Line {
 	}
 
 	isEqualTo(other) {
-		if (other instanceof Line) {
-			return (
-				arePointsEqual(this.endA, other.endA) &&
-				arePointsEqual(this.endB, other.endB)
-			);
+		if (!(other instanceof Line)) {
+			return false;
 		}
-		return false;
+		return (
+			arePointsEqual(this.endA, other.endA) &&
+			arePointsEqual(this.endB, other.endB)
+		);
 	}
 	get slope() {
 		return (this.endB.y - this.endA.y) / (this.endB.x - this.endA.x);

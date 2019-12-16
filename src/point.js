@@ -19,21 +19,21 @@ class Point {
 		return callback(this.x, this.y);
 	}
 	isEqualTo(other) {
-		if (other instanceof Point) {
-			return this.x === other.x && this.y === other.y;
+		if (!(other instanceof Point)) {
+			return false;
 		}
-		return false;
+		return this.x === other.x && this.y === other.y;
 	}
 	clone() {
 		return new Point(this.x, this.y);
 	}
 	findDistanceTo(other) {
-		if (other instanceof Point) {
-			let XsDiff = other.x - this.x;
-			let YsDiff = other.y - this.y;
-			return Math.sqrt(Math.pow(XsDiff, 2) + Math.pow(YsDiff, 2));
+		if (!(other instanceof Point)) {
+			return NaN;
 		}
-		return NaN;
+		let XsDiff = other.x - this.x;
+		let YsDiff = other.y - this.y;
+		return Math.sqrt(Math.pow(XsDiff, 2) + Math.pow(YsDiff, 2));
 	}
 
 	isOn(other) {
