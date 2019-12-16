@@ -84,7 +84,7 @@ class Line {
 		return point instanceof Point && isXValid && isYValid;
 	}
 	findPointFromStart(distance) {
-		if (distance instanceof Number) {
+		if (typeof distance === "number") {
 			let slope = this.slope;
 			let theta = Math.atan(slope);
 			let x = this.endA.x + distance * Math.cos(theta).toFixed(2);
