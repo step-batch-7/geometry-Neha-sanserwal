@@ -1,4 +1,12 @@
 "use strict";
+
+const findPointFrom = function(point, distance, slope) {
+	let theta = Math.atan(slope);
+	let newX = parseFloat((point.x + distance * Math.cos(theta)).toFixed(2));
+	let newY = parseFloat((point.y + distance * Math.sin(theta)).toFixed(2));
+	return new Point(newX, newY);
+};
+
 class Point {
 	constructor(x, y) {
 		this.x = x;
@@ -8,9 +16,6 @@ class Point {
 		return `[Point @(${this.x},${this.y})]`;
 	}
 	visit(callback) {
-		if (typeof callback !== "function") {
-			throw new Error(`callback is not a function`);
-		}
 		return callback(this.x, this.y);
 	}
 	isEqualTo(other) {
@@ -36,3 +41,4 @@ class Point {
 	}
 }
 exports.Point = Point;
+exports.findPointFrom = findPointFrom;

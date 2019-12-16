@@ -1,4 +1,5 @@
 const Point = require("./point.js").Point;
+const findPointFrom = require("./point.js").findPointFrom;
 
 const arePointsEqual = function(pointA, pointB) {
 	return pointA.x === pointB.x && pointA.y === pointB.y;
@@ -10,13 +11,6 @@ const isNumInRange = function(num, start, end) {
 
 const intercept = function(x, y, slope) {
 	return y - slope * x;
-};
-
-const findPointFrom = function(point, distance, slope) {
-	let theta = Math.atan(slope);
-	let newX = parseFloat((point.x + distance * Math.cos(theta)).toFixed(2));
-	let newY = parseFloat((point.y + distance * Math.sin(theta)).toFixed(2));
-	return [newX, newY];
 };
 
 class Line {
@@ -92,19 +86,17 @@ class Line {
 	}
 	findPointFromStart(distance) {
 		let slope = this.slope;
-		let start = { x: this.endA.x, y: this.endA.y };
-		let point = findPointFrom(start, distance, slope);
-		if (!point.includes(NaN)) {
-			return new Point(point[0], point[1]);
+		let point = findPointFrom(this.endA, distance, slope);
+		if (![point.x, point.y].includes(NaN)) {
+			return point;
 		}
 		return undefined;
 	}
 	findPointFromEnd(distance) {
 		let slope = this.slope;
-		let end = { x: this.endB.x, y: this.endB.y };
-		let point = findPointFrom(end, distance, slope);
-		if (!point.includes(NaN)) {
-			return new Point(point[0], point[1]);
+		let point = findPointFrom(this.endB, distance, slope);
+		if (![point.x, point.y].includes(NaN)) {
+			return point;
 		}
 		return undefined;
 	}
