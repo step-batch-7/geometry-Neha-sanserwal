@@ -55,6 +55,12 @@ describe("Line", function() {
 			line2 = new Line({ x: 3, y: 3 }, { x: 4, y: 4 });
 			assert.ok(!line1.isParallelTo(line2));
 		});
+		it("should invalidate if lines are collinear", function() {
+			let line1 = new Line({ x: 0, y: 1 }, { x: 0, y: 5 });
+			let line2 = new Line({ x: 0, y: 5 }, { x: 0, y: 7 });
+			assert.ok(!line1.isParallelTo(line2));
+		});
+
 		it("should invalidate if other is not line", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
 			let line2 = { endA: { x: 2, y: 2 }, endB: { x: 1, y: 2 } };

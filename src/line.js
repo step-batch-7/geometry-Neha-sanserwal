@@ -13,6 +13,12 @@ const intercept = function(x, y, slope) {
 	return y - slope * x;
 };
 
+const arePointsCollinear = function(pointA, pointB, pointC) {
+	let [x1, x2, x3] = [pointA.x, pointB.x, pointC.x];
+	let [y1, y2, y3] = [pointA.y, pointB.y, pointC.y];
+	return 0.5 * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) === 0;
+};
+
 class Line {
 	constructor(pointA, pointB) {
 		this.endA = new Point(pointA.x, pointA.y);
@@ -37,14 +43,8 @@ class Line {
 
 	isParallelTo(other) {
 		if (other instanceof Line) {
-			let thisIntercept = intercept(this.endA.x, this.endA.y, this.slope);
-			let otherIntercept = intercept(
-				other.endA.x,
-				other.endA.y,
-				other.slope
-			);
 			return (
-				!(thisIntercept === otherIntercept) &&
+				!arePointsCollinear(this.endA, this.endB, other.endA) &&
 				this.slope === other.slope
 			);
 		}
