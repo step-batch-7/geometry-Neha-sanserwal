@@ -51,4 +51,11 @@ describe("Point", function() {
 			assert.deepStrictEqual(point.clone(), { x: 1, y: 2 });
 		});
 	});
+	describe("findDistanceTo", function() {
+		it("should have 0 distance if both points have same coordinates", function() {
+			let point1 = new Point(1, 2);
+			let point2 = new Point(1, 2);
+			assert.strictEqual(point1.findDistanceTo(point2), 0);
+		});
+	});
 });

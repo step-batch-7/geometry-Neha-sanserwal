@@ -22,5 +22,8 @@ class Point {
 	clone() {
 		return new Point(this.x, this.y);
 	}
+	findDistanceTo(other) {
+		return 0;
+	}
 }
 exports.Point = Point;
