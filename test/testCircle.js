@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const Circle = require("../src/circle").Circle;
+const Point = require("../src/point").Point;
 describe("Circle", function() {
 	describe("toString", function() {
 		it("should give the string representation of circle dimensions", function() {
@@ -59,6 +60,13 @@ describe("Circle", function() {
 		it("should return perimeter of circle having real number radius", function() {
 			let circle = new Circle({ x: 0, y: 0 }, 1.2);
 			assert.isAtLeast(circle.perimeter, 7.5);
+		});
+	});
+	describe("hasPoint", function() {
+		it("should validate if distance of point from circle center equal to radius", function() {
+			let circle = new Circle({ x: 1, y: 1 }, 5);
+			let point = new Point(4, 5);
+			assert.ok(circle.hasPoint(point));
 		});
 	});
 });

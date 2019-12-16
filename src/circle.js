@@ -1,4 +1,5 @@
 const Point = require("./point.js").Point;
+
 class Circle {
 	constructor(p, radius) {
 		this.point = new Point(p.x, p.y);
@@ -18,6 +19,9 @@ class Circle {
 	}
 	get perimeter() {
 		return 2 * Math.PI * this.radius;
+	}
+	hasPoint(other) {
+		return this.point.findDistanceTo(other) === this.radius;
 	}
 }
 exports.Circle = Circle;

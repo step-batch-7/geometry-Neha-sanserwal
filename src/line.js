@@ -42,7 +42,6 @@ class Line {
 	}
 
 	isParallelTo(other) {
-		console.log(other instanceof Line);
 		if (!(other instanceof Line)) {
 			return false;
 		}
