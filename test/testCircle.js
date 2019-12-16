@@ -45,4 +45,20 @@ describe("Circle", function() {
 			assert.isAtLeast(circle.area, 12.56);
 		});
 	});
+	describe("perimeter", function() {
+		it("should return perimeter of circle having zero radius", function() {
+			let circle = new Circle({ x: 0, y: 0 }, 0);
+			assert.strictEqual(circle.perimeter, 0);
+		});
+		it("should return perimeter of circle having radius greater than zero", function() {
+			let circle = new Circle({ x: 0, y: 0 }, 1);
+			assert.isAtLeast(circle.perimeter, 6.14);
+			circle = new Circle({ x: 0, y: 0 }, 2);
+			assert.isAtLeast(circle.perimeter, 12.0);
+		});
+		it("should return perimeter of circle having real number radius", function() {
+			let circle = new Circle({ x: 0, y: 0 }, 1.2);
+			assert.isAtLeast(circle.perimeter, 7.5);
+		});
+	});
 });
