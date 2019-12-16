@@ -163,5 +163,16 @@ describe("Line", function() {
 			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
 			assert.deepStrictEqual(line.findPointFromStart(0), { x: 1, y: 1 });
 		});
+		it("should return calculated point if distance is greater than zero", function() {
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.deepStrictEqual(line.findPointFromStart(2), {
+				x: 2.42,
+				y: 2.42
+			});
+		});
+		it("should return NaN if the distance is not a number", function() {
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.deepStrictEqual(line.findPointFromStart("a"), NaN);
+		});
 	});
 });

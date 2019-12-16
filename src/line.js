@@ -84,7 +84,14 @@ class Line {
 		return point instanceof Point && isXValid && isYValid;
 	}
 	findPointFromStart(distance) {
-		return new Point(this.endA.x, this.endA.y);
+		if (distance instanceof Number) {
+			let slope = this.slope;
+			let theta = Math.atan(slope);
+			let x = this.endA.x + distance * Math.cos(theta).toFixed(2);
+			let y = this.endA.x + distance * Math.sin(theta).toFixed(2);
+			return new Point(x, y);
+		}
+		return NaN;
 	}
 }
 exports.Line = Line;
