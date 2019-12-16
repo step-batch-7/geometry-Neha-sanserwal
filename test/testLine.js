@@ -175,4 +175,21 @@ describe("Line", function() {
 			assert.isNaN(line.findPointFromStart("a"));
 		});
 	});
+	describe("findPointFromEnd", function() {
+		it("should return end point of the line if distance is zero", function() {
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.deepStrictEqual(line.findPointFromEnd(0), { x: 4, y: 4 });
+		});
+		it("should return calculated point if distance is greater than zero", function() {
+			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 4 });
+			assert.deepStrictEqual(line.findPointFromEnd(2), {
+				x: 4.1,
+				y: 4.66
+			});
+		});
+		it("should return NaN if the distance is not a number", function() {
+			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.isNaN(line.findPointFromStart("a"));
+		});
+	});
 });

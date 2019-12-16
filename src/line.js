@@ -93,5 +93,15 @@ class Line {
 		}
 		return NaN;
 	}
+	findPointFromEnd(distance) {
+		if (typeof distance === "number") {
+			let slope = this.slope;
+			let theta = Math.atan(slope);
+			let x = this.endB.x + distance * Math.cos(theta).toFixed(2);
+			let y = this.endB.x + distance * Math.sin(theta).toFixed(2);
+			return new Point(x, y);
+		}
+		return NaN;
+	}
 }
 exports.Line = Line;
