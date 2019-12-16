@@ -76,9 +76,14 @@ describe("Point", function() {
 	});
 	describe("isOn", function() {
 		it("should validate if the point is on given shape", function() {
-			let point = new Point(1, 2);
+			let point = new Point(2, 2);
 			let line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
-			assert.strictEqual(point.isOn(line));
+			assert.ok(point.isOn(line));
+		});
+		it("should invalidate if the point is not on line", function() {
+			let point = new Point(1, 0);
+			let line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.ok(!point.isOn(line));
 		});
 	});
 });
