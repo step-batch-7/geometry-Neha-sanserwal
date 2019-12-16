@@ -16,7 +16,7 @@ const findPointFrom = function(point, distance, slope) {
 	let theta = Math.atan(slope);
 	let newX = parseFloat((point.x + distance * Math.cos(theta)).toFixed(2));
 	let newY = parseFloat((point.y + distance * Math.sin(theta)).toFixed(2));
-	return { x: newX, y: newY };
+	return [newX, newY];
 };
 
 class Line {
@@ -94,16 +94,19 @@ class Line {
 		let slope = this.slope;
 		let start = { x: this.endA.x, y: this.endA.y };
 		let point = findPointFrom(start, distance, slope);
-		if (point.includes(NaN)) {
-			return undefined;
+		if (!point.includes(NaN)) {
+			return new Point(point[0], point[1]);
 		}
-		return new Point(point[0], point[1]);
+		return undefined;
 	}
 	findPointFromEnd(distance) {
 		let slope = this.slope;
 		let end = { x: this.endB.x, y: this.endB.y };
 		let point = findPointFrom(end, distance, slope);
-		return new Point(point[0], point[1]);
+		if (!point.includes(NaN)) {
+			return new Point(point[0], point[1]);
+		}
+		return undefined;
 	}
 }
 exports.Line = Line;
