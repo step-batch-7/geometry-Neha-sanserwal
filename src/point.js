@@ -30,5 +30,8 @@ class Point {
 		}
 		return NaN;
 	}
+	isOn(line) {
+		line.hasPoint(this);
+	}
 }
 exports.Point = Point;

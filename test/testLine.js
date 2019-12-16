@@ -166,8 +166,8 @@ describe("Line", function() {
 		it("should return calculated point if distance is greater than zero", function() {
 			let line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
 			assert.deepStrictEqual(line.findPointFromStart(2), {
-				x: 2.42,
-				y: 2.42
+				x: 2.41,
+				y: 2.41
 			});
 			line = new Line({ x: 0, y: 1 }, { x: 4, y: 4 });
 			assert.deepStrictEqual(line.findPointFromStart(2), {
@@ -175,26 +175,29 @@ describe("Line", function() {
 				y: 2.2
 			});
 		});
-		it("should return NaN if the distance is not a number", function() {
+		it("should return undefined if the distance is not a number", function() {
 			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
-			assert.isNaN(line.findPointFromStart("a"));
+			assert.isUndefined(line.findPointFromStart("a"));
 		});
 	});
 	describe("findPointFromEnd", function() {
 		it("should return end point of the line if distance is zero", function() {
 			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
-			assert.deepStrictEqual(line.findPointFromEnd(0), { x: 4, y: 4 });
+			assert.deepStrictEqual(line.findPointFromEnd(0), {
+				x: 4.0,
+				y: 4.0
+			});
 		});
 		it("should return calculated point if distance is greater than zero", function() {
 			const line = new Line({ x: 1, y: 1 }, { x: 3, y: 4 });
 			assert.deepStrictEqual(line.findPointFromEnd(2), {
-				x: 4.1,
+				x: 4.11,
 				y: 5.66
 			});
 		});
-		it("should return NaN if the distance is not a number", function() {
+		it("should return undefined if the distance is not a number", function() {
 			const line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
-			assert.isNaN(line.findPointFromStart("a"));
+			assert.isUndefined(line.findPointFromStart("a"));
 		});
 	});
 });

@@ -14,8 +14,8 @@ const intercept = function(x, y, slope) {
 
 const findPointFrom = function(point, distance, slope) {
 	let theta = Math.atan(slope);
-	let newX = point.x + distance * Math.cos(theta).toFixed(2);
-	let newY = point.y + distance * Math.sin(theta).toFixed(2);
+	let newX = parseFloat((point.x + distance * Math.cos(theta)).toFixed(2));
+	let newY = parseFloat((point.y + distance * Math.sin(theta)).toFixed(2));
 	return { x: newX, y: newY };
 };
 
@@ -91,22 +91,19 @@ class Line {
 		return point instanceof Point && isXValid && isYValid;
 	}
 	findPointFromStart(distance) {
-		if (typeof distance === "number") {
-			let slope = this.slope;
-			let start = { x: this.endA.x, y: this.endA.y };
-			let point = findPointFrom(start, distance, slope);
-			return new Point(point.x, point.y);
+		let slope = this.slope;
+		let start = { x: this.endA.x, y: this.endA.y };
+		let point = findPointFrom(start, distance, slope);
+		if (point.includes(NaN)) {
+			return undefined;
 		}
-		return NaN;
+		return new Point(point[0], point[1]);
 	}
 	findPointFromEnd(distance) {
-		if (typeof distance === "number") {
-			let slope = this.slope;
-			let end = { x: this.endB.x, y: this.endB.y };
-			let point = findPointFrom(end, distance, slope);
-			return new Point(point.x, point.y);
-		}
-		return NaN;
+		let slope = this.slope;
+		let end = { x: this.endB.x, y: this.endB.y };
+		let point = findPointFrom(end, distance, slope);
+		return new Point(point[0], point[1]);
 	}
 }
 exports.Line = Line;

@@ -1,5 +1,6 @@
 const assert = require("chai").assert;
 const Point = require("../src/point.js").Point;
+const Line = require("../src/line.js").Line;
 describe("Point", function() {
 	describe("toString", function() {
 		it("should represent points", function() {
@@ -71,6 +72,13 @@ describe("Point", function() {
 			let point1 = new Point(0.3, 2.5);
 			let point2 = [1.0, 2.1];
 			assert.isNaN(point1.findDistanceTo(point2));
+		});
+	});
+	describe("isOn", function() {
+		it("should validate if the point is on given shape", function() {
+			let point = new Point(1, 2);
+			let line = new Line({ x: 1, y: 1 }, { x: 4, y: 4 });
+			assert.strictEqual(point.isOn(line));
 		});
 	});
 });
