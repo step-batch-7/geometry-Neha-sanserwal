@@ -42,13 +42,14 @@ class Line {
 	}
 
 	isParallelTo(other) {
-		if (other instanceof Line) {
-			return (
-				!arePointsCollinear(this.endA, this.endB, other.endA) &&
-				this.slope === other.slope
-			);
+		console.log(other instanceof Line);
+		if (!(other instanceof Line)) {
+			return false;
 		}
-		return false;
+		return (
+			!arePointsCollinear(this.endA, this.endB, other.endA) &&
+			this.slope === other.slope
+		);
 	}
 
 	get length() {

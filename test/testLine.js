@@ -63,7 +63,7 @@ describe("Line", function() {
 
 		it("should invalidate if other is not line", function() {
 			let line1 = new Line({ x: 1, y: 2 }, { x: 3, y: 8 });
-			let line2 = { endA: { x: 2, y: 2 }, endB: { x: 1, y: 2 } };
+			let line2 = "";
 			assert.ok(!line1.isParallelTo(line2));
 		});
 		it("should invalidate if lines are perpendicular to each other", function() {
