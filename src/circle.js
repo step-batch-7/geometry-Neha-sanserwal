@@ -14,7 +14,7 @@ class Circle {
 		return false;
 	}
 	get area() {
-		return 0;
+		return Math.PI * Math.pow(this.radius, 2);
 	}
 }
 exports.Circle = Circle;

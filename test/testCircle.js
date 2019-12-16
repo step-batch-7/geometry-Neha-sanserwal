@@ -29,8 +29,20 @@ describe("Circle", function() {
 	});
 	describe("area", function() {
 		it("should give area of circle having radius zero ", function() {
-			let circle = new Circle({ x: 0, y: 0 }, 5);
+			let circle = new Circle({ x: 0, y: 0 }, 0);
 			assert.strictEqual(circle.area, 0);
+		});
+		it("should give area of circle having radius greater than zero", function() {
+			let circle = new Circle({ x: 0, y: 0 }, 1);
+			assert.isAtLeast(circle.area, 3.14);
+			circle = new Circle({ x: 0, y: 0 }, 2);
+			assert.isAtLeast(circle.area, 12.56);
+		});
+		it("should give area of circle having radius real number ", function() {
+			let circle = new Circle({ x: 0, y: 0 }, 1.2);
+			assert.isAtLeast(circle.area, 3.14);
+			circle = new Circle({ x: 0, y: 0 }, 2.0);
+			assert.isAtLeast(circle.area, 12.56);
 		});
 	});
 });
