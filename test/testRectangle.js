@@ -19,5 +19,9 @@ describe("Rectangle", function() {
 			let rect = new Rectangle({ x: 1, y: 0 }, { x: 5, y: 0 });
 			assert.strictEqual(rect.area, 0);
 		});
+		it("should give area equal to zero when width and length > 0", function() {
+			let rect = new Rectangle({ x: 1, y: 3 }, { x: 5, y: 8 });
+			assert.strictEqual(rect.area, 20);
+		});
 	});
 });

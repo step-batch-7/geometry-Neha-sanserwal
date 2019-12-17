@@ -8,7 +8,9 @@ class Rectangle {
 		return `[Rectangle (${this.dPointA.x},${this.dPointA.y}) to (${this.dPointB.x},${this.dPointB.y})]`;
 	}
 	get area() {
-		return 0;
+		let length = this.dPointB.x - this.dPointA.x;
+		let width = this.dPointB.y - this.dPointA.y;
+		return length * width;
 	}
 }
 exports.Rectangle = Rectangle;
