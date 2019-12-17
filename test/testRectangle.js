@@ -88,5 +88,35 @@ describe("Rectangle", function() {
 			let point = new Point(1, 0);
 			assert.ok(rect.hasPoint(point));
 		});
+		it("should invalidate if point is outside of rectangle ", function() {
+			let rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			let point = new Point(3, 3);
+			assert.ok(!rect.hasPoint(point));
+			rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			point = new Point(-1, 3);
+			assert.ok(!rect.hasPoint(point));
+			rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			point = new Point(4, 4);
+			assert.ok(!rect.hasPoint(point));
+		});
+		it("should invalidate if point is inside of rectangle ", function() {
+			let rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			let point = new Point(1, 1);
+			assert.ok(!rect.hasPoint(point));
+			rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			point = new Point(1.5, 1.5);
+			assert.ok(!rect.hasPoint(point));
+			rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			point = new Point(0.1, 0.1);
+			assert.ok(!rect.hasPoint(point));
+		});
+		it("should validate if point is one point of rectangle vertices ", function() {
+			let rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			let point = new Point(0, 0);
+			assert.ok(rect.hasPoint(point));
+			rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			point = new Point(2, 2);
+			assert.ok(rect.hasPoint(point));
+		});
 	});
 });
