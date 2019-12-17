@@ -40,10 +40,20 @@ describe("Rectangle", function() {
 		});
 	});
 	describe("isEqualTo", function() {
-		it("should validate if diagonal points of both rectangle are equal are equal ", function() {
+		it("should validate if diagonal points of both rectangle are equal ", function() {
 			let rect1 = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
 			let rect2 = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
 			assert.ok(rect1.isEqualTo(rect2));
+		});
+		it("should invalidate if first diagonal point of both rectangle are equal ", function() {
+			let rect1 = new Rectangle({ x: 0, y: 0 }, { x: 1, y: 2 });
+			let rect2 = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });
+			assert.ok(!rect1.isEqualTo(rect2));
+		});
+		it("should invalidate if second diagonal point of both rectangle are equal ", function() {
+			let rect1 = new Rectangle({ x: 0, y: 0 }, { x: 1, y: 2 });
+			let rect2 = new Rectangle({ x: 0, y: 3 }, { x: 1, y: 2 });
+			assert.ok(!rect1.isEqualTo(rect2));
 		});
 	});
 });

@@ -10,7 +10,7 @@ class Rectangle {
 	isEqualTo(other) {
 		return (
 			this.dPointA.isEqualTo(other.dPointA) &&
-			this.dPointB.isEqualTo(this.dPointB)
+			this.dPointB.isEqualTo(other.dPointB)
 		);
 	}
 	get area() {
