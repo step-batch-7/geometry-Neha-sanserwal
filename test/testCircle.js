@@ -86,5 +86,11 @@ describe("Circle", function() {
 			let expected = new Circle({ x: 4, y: 2 }, 5);
 			assert.deepStrictEqual(circle.moveTo(point), expected);
 		});
+		it("should not move to the given dimensions if it is not an instance Point", function() {
+			let circle = new Circle({ x: 1, y: 1 }, 5);
+			let point = 4;
+			expected = undefined;
+			assert.deepStrictEqual(circle.moveTo(point), expected);
+		});
 	});
 });

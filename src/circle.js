@@ -27,6 +27,9 @@ class Circle {
 		return this.point.findDistanceTo(other) === this.radius;
 	}
 	moveTo(other) {
+		if (!(other instanceof Point)) {
+			return undefined;
+		}
 		return new Circle(other, this.radius);
 	}
 }
