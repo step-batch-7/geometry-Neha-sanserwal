@@ -1,4 +1,10 @@
 const Point = require("./point").Point;
+
+const getLengthAndWidth = function(pointA, pointB) {
+	let length = pointB.x - pointA.x;
+	let width = pointB.y - pointA.y;
+	return { length, width };
+};
 class Rectangle {
 	constructor(pointA, pointB) {
 		this.dPointA = new Point(pointA.x, pointA.y);
@@ -14,13 +20,11 @@ class Rectangle {
 		);
 	}
 	get area() {
-		let length = this.dPointB.x - this.dPointA.x;
-		let width = this.dPointB.y - this.dPointA.y;
+		let { length, width } = getLengthAndWidth(this.dPointA, this.dPointB);
 		return length * width;
 	}
 	get perimeter() {
-		let length = this.dPointB.x - this.dPointA.x;
-		let width = this.dPointB.y - this.dPointA.y;
+		let { length, width } = getLengthAndWidth(this.dPointA, this.dPointB);
 		return 2 * (length + width);
 	}
 }
