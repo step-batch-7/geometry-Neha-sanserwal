@@ -14,6 +14,9 @@ class Rectangle {
 		return `[Rectangle (${this.dPointA.x},${this.dPointA.y}) to (${this.dPointB.x},${this.dPointB.y})]`;
 	}
 	isEqualTo(other) {
+		if (!(other instanceof Rectangle)) {
+			return false;
+		}
 		return (
 			this.dPointA.isEqualTo(other.dPointA) &&
 			this.dPointB.isEqualTo(other.dPointB)

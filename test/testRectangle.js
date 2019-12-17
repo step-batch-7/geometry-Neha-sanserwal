@@ -55,5 +55,10 @@ describe("Rectangle", function() {
 			let rect2 = new Rectangle({ x: 0, y: 3 }, { x: 1, y: 2 });
 			assert.ok(!rect1.isEqualTo(rect2));
 		});
+		it("should invalidate if other is not a rectangle", function() {
+			let rect1 = new Rectangle({ x: 0, y: 0 }, { x: 1, y: 2 });
+			let rect2 = {};
+			assert.ok(!rect1.isEqualTo(rect2));
+		});
 	});
 });
