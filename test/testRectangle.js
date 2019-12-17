@@ -39,4 +39,11 @@ describe("Rectangle", function() {
 			assert.strictEqual(rect.perimeter, 8);
 		});
 	});
+	describe("isEqualTo", function() {
+		it("should validate if diagonal points of both rectangle are equal are equal ", function() {
+			let rect1 = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			let rect2 = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			assert.ok(rect1.isEqualTo(rect2));
+		});
+	});
 });

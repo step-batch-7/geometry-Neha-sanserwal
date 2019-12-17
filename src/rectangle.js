@@ -7,6 +7,12 @@ class Rectangle {
 	toString() {
 		return `[Rectangle (${this.dPointA.x},${this.dPointA.y}) to (${this.dPointB.x},${this.dPointB.y})]`;
 	}
+	isEqualTo(other) {
+		return (
+			this.dPointA.isEqualTo(other.dPointA) &&
+			this.dPointB.isEqualTo(this.dPointB)
+		);
+	}
 	get area() {
 		let length = this.dPointB.x - this.dPointA.x;
 		let width = this.dPointB.y - this.dPointA.y;
