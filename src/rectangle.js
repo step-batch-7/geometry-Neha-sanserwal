@@ -1,8 +1,8 @@
 const Point = require("./point").Point;
 
 const getLengthAndWidth = function(pointA, pointB) {
-	let length = pointB.x - pointA.x;
-	let width = pointB.y - pointA.y;
+	let length = Math.abs(pointB.x - pointA.x);
+	let width = Math.abs(pointB.y - pointA.y);
 	return { length, width };
 };
 class Rectangle {
@@ -30,5 +30,6 @@ class Rectangle {
 		let { length, width } = getLengthAndWidth(this.dPointA, this.dPointB);
 		return 2 * (length + width);
 	}
+	hasPoint() {}
 }
 exports.Rectangle = Rectangle;
