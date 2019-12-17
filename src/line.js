@@ -33,10 +33,9 @@ class Line {
 			return false;
 		}
 		return (
-			(arePointsEqual(this.endA, other.endA) &&
-				arePointsEqual(this.endB, other.endB)) ||
-			(arePointsEqual(this.endB, other.endA) &&
-				arePointsEqual(this.endA, other.endB))
+			(this.endA.isEqualTo(other.endA) &&
+				this.endB.isEqualTo(other.endB)) ||
+			(this.endB.isEqualTo(other.endA) && this.endA.isEqualTo(other.endB))
 		);
 	}
 	get slope() {
