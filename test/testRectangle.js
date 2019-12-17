@@ -30,5 +30,13 @@ describe("Rectangle", function() {
 			let rect = new Rectangle({ x: 0, y: 1 }, { x: 0, y: 5 });
 			assert.strictEqual(rect.perimeter, 8);
 		});
+		it("should give perimeter when width is zero ", function() {
+			let rect = new Rectangle({ x: 0, y: 1 }, { x: 0, y: 5 });
+			assert.strictEqual(rect.perimeter, 8);
+		});
+		it("should give perimeter when length and width >0", function() {
+			let rect = new Rectangle({ x: 0, y: 1 }, { x: 0, y: 5 });
+			assert.strictEqual(rect.perimeter, 8);
+		});
 	});
 });
