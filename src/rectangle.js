@@ -18,8 +18,10 @@ class Rectangle {
 			return false;
 		}
 		return (
-			this.dPointA.isEqualTo(other.dPointA) &&
-			this.dPointB.isEqualTo(other.dPointB)
+			(this.dPointA.isEqualTo(other.dPointA) &&
+				this.dPointB.isEqualTo(other.dPointB)) ||
+			(this.dPointB.isEqualTo(other.dPointA) &&
+				this.dPointA.isEqualTo(other.dPointB))
 		);
 	}
 	get area() {
