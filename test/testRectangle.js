@@ -58,6 +58,14 @@ describe("Rectangle", function() {
 			rect2 = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
 			assert.ok(rect1.isEqualTo(rect2));
 		});
+		it("should validate if the other diagonal of rectangle is given", function() {
+			let rect1 = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			let rect2 = new Rectangle({ x: 2, y: 0 }, { x: 0, y: 2 });
+			assert.ok(rect1.isEqualTo(rect2));
+			rect1 = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			rect2 = new Rectangle({ x: 0, y: 2 }, { x: 2, y: 0 });
+			assert.ok(rect1.isEqualTo(rect2));
+		});
 		it("should invalidate if first diagonal point of both rectangle are equal ", function() {
 			let rect1 = new Rectangle({ x: 0, y: 0 }, { x: 1, y: 2 });
 			let rect2 = new Rectangle({ x: 0, y: 0 }, { x: 3, y: 2 });

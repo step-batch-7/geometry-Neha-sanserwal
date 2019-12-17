@@ -6,7 +6,7 @@ const arePointsEqual = function(pointA, pointB) {
 };
 
 const isNumInRange = function(num, start, end) {
-	return num >= start && num <= end;
+	return (num >= start && num <= end) || (num <= start && num >= end);
 };
 
 const intercept = function(x, y, slope) {
@@ -33,8 +33,10 @@ class Line {
 			return false;
 		}
 		return (
-			arePointsEqual(this.endA, other.endA) &&
-			arePointsEqual(this.endB, other.endB)
+			(arePointsEqual(this.endA, other.endA) &&
+				arePointsEqual(this.endB, other.endB)) ||
+			(arePointsEqual(this.endB, other.endA) &&
+				arePointsEqual(this.endA, other.endB))
 		);
 	}
 	get slope() {
