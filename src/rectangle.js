@@ -30,6 +30,12 @@ class Rectangle {
 		let { length, width } = getLengthAndWidth(this.dPointA, this.dPointB);
 		return 2 * (length + width);
 	}
-	hasPoint() {}
+	hasPoint(other) {
+		let areXsEqual = this.dPointA.x == other.x || this.dPointB.x == other.x;
+		let areYsEqual = this.dPointA.y == other.y || this.dPointB.y == other.y;
+		let isXInRange = this.dPointB.x > other.x && this.dPointA.x < other.x;
+		let isYInRange = this.dPointB.y > other.y && this.dPointA.y < other.y;
+		return (areXsEqual && isYInRange) || (areYsEqual && isXInRange);
+	}
 }
 exports.Rectangle = Rectangle;

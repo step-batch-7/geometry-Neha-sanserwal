@@ -71,4 +71,11 @@ describe("Rectangle", function() {
 			assert.ok(!rect1.isEqualTo(rect2));
 		});
 	});
+	describe("hasPoint", function() {
+		it("should validate if point is on any one side of rectangle", function() {
+			let rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
+			let point = new Point(1, 0);
+			assert.ok(rect.hasPoint(point));
+		});
+	});
 });
