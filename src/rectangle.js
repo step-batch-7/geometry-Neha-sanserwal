@@ -1,4 +1,5 @@
 const Line = require("./line").Line;
+const Point = require("./point").Point;
 const isNumInRange = require("./line").isNumInRange;
 
 const getLengthAndWidth = function(pointA, pointB) {
@@ -46,12 +47,25 @@ class Rectangle {
 	}
 
 	hasPoint(other) {
+		if (!other instanceof Point) {
+			return false;
+		}
 		let [dPointA, dPointB] = [this.diag.endA, this.diag.endB];
 		let areXsEqual = dPointA.x == other.x || dPointB.x == other.x;
 		let areYsEqual = dPointA.y == other.y || dPointB.y == other.y;
 		let isXInRange = isNumInRange(other.x, dPointA.x, dPointB.x);
 		let isYInRange = isNumInRange(other.y, dPointA.y, dPointB.y);
 		return (areXsEqual && isYInRange) || (areYsEqual && isXInRange);
+	}
+
+	covers(other) {
+		if (!other instanceof Point) {
+			return false;
+		}
+		let [dPointA, dPointB] = [this.diag.endA, this.diag.endB];
+		let isXInRange = other.x > dPointA.x && other.x < dPointB.x;
+		let isYInRange = other.y > dPointA.y && other.y < dPointB.y;
+		return isXInRange && isYInRange;
 	}
 }
 exports.Rectangle = Rectangle;

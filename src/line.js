@@ -69,6 +69,7 @@ class Line {
 		let c = intercept(this.endA.x, this.endA.y, this.slope);
 		return (y - c) / this.slope;
 	}
+
 	split() {
 		const midX = (this.endB.x - this.endA.x) / 2;
 		const midY = (this.endB.y - this.endB.y) / 2;
