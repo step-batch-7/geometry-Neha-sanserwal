@@ -1,4 +1,5 @@
-const Point = require("./point").Point;
+const Line = require("./line").Line;
+const isNumInRange = require("./line").isNumInRange;
 
 const getLengthAndWidth = function(pointA, pointB) {
 	let length = Math.abs(pointB.x - pointA.x);
@@ -13,46 +14,43 @@ const getSecondDiagonal = function(pointA, pointB) {
 
 class Rectangle {
 	constructor(pointA, pointB) {
-		this.dPointA = new Point(pointA.x, pointA.y);
-		this.dPointB = new Point(pointB.x, pointB.y);
+		this.diag = new Line(pointA, pointB);
 	}
 
 	toString() {
-		return `[Rectangle (${this.dPointA.x},${this.dPointA.y}) to (${this.dPointB.x},${this.dPointB.y})]`;
+		let [dPointA, dPointB] = [this.diag.endA, this.diag.endB];
+		return `[Rectangle (${dPointA.x},${dPointA.y}) to (${dPointB.x},${dPointB.y})]`;
 	}
 
 	isEqualTo(other) {
 		if (!(other instanceof Rectangle)) {
 			return false;
 		}
-		let secondDiagonal = getSecondDiagonal(this.dPointA, this.dPointB);
+		let secondDiagonal = getSecondDiagonal(this.diag.endA, this.diag.endB);
 		return (
-			(this.dPointA.isEqualTo(other.dPointA) &&
-				this.dPointB.isEqualTo(other.dPointB)) ||
-			(this.dPointB.isEqualTo(other.dPointA) &&
-				this.dPointA.isEqualTo(other.dPointB)) ||
-			(secondDiagonal.dPointA.isEqualTo(other.dPointA) &&
-				secondDiagonal.dPointB.isEqualTo(other.dPointB)) ||
-			(secondDiagonal.dPointB.isEqualTo(other.dPointA) &&
-				secondDiagonal.dPointA.isEqualTo(other.dPointB))
+			this.diag.isEqualTo(other.diag) ||
+			secondDiagonal.diag.isEqualTo(other.diag)
 		);
 	}
 
 	get area() {
-		let { length, width } = getLengthAndWidth(this.dPointA, this.dPointB);
+		let [dPointA, dPointB] = [this.diag.endA, this.diag.endB];
+		let { length, width } = getLengthAndWidth(dPointA, dPointB);
 		return length * width;
 	}
 
 	get perimeter() {
-		let { length, width } = getLengthAndWidth(this.dPointA, this.dPointB);
+		let [dPointA, dPointB] = [this.diag.endA, this.diag.endB];
+		let { length, width } = getLengthAndWidth(dPointA, dPointB);
 		return 2 * (length + width);
 	}
 
 	hasPoint(other) {
-		let areXsEqual = this.dPointA.x == other.x || this.dPointB.x == other.x;
-		let areYsEqual = this.dPointA.y == other.y || this.dPointB.y == other.y;
-		let isXInRange = this.dPointB.x >= other.x && this.dPointA.x <= other.x;
-		let isYInRange = this.dPointB.y >= other.y && this.dPointA.y <= other.y;
+		let [dPointA, dPointB] = [this.diag.endA, this.diag.endB];
+		let areXsEqual = dPointA.x == other.x || dPointB.x == other.x;
+		let areYsEqual = dPointA.y == other.y || dPointB.y == other.y;
+		let isXInRange = isNumInRange(other.x, dPointA.x, dPointB.x);
+		let isYInRange = isNumInRange(other.y, dPointA.y, dPointB.y);
 		return (areXsEqual && isYInRange) || (areYsEqual && isXInRange);
 	}
 }

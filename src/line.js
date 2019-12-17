@@ -1,10 +1,6 @@
 const Point = require("./point.js").Point;
 const findPointFrom = require("./point.js").findPointFrom;
 
-const arePointsEqual = function(pointA, pointB) {
-	return pointA.x === pointB.x && pointA.y === pointB.y;
-};
-
 const isNumInRange = function(num, start, end) {
 	return (num >= start && num <= end) || (num <= start && num >= end);
 };
@@ -103,3 +99,4 @@ class Line {
 	}
 }
 exports.Line = Line;
+exports.isNumInRange = isNumInRange;
