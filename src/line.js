@@ -87,18 +87,18 @@ class Line {
 	findPointFromStart(distance) {
 		let slope = this.slope;
 		let point = findPointFrom(this.endA, distance, slope);
-		if (![point.x, point.y].includes(NaN)) {
-			return point;
+		if (isNaN(point.x) || isNaN(point.y)) {
+			return undefined;
 		}
-		return undefined;
+		return point;
 	}
 	findPointFromEnd(distance) {
 		let slope = this.slope;
 		let point = findPointFrom(this.endB, distance, slope);
-		if (![point.x, point.y].includes(NaN)) {
-			return point;
+		if (isNaN(point.x) || isNaN(point.y)) {
+			return undefined;
 		}
-		return undefined;
+		return point;
 	}
 }
 exports.Line = Line;
