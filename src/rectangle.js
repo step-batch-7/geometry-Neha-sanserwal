@@ -1,11 +1,14 @@
 const Point = require("./point").Point;
 class Rectangle {
 	constructor(pointA, pointB) {
-		this.endA = new Point(pointA.x, pointA.y);
-		this.endB = new Point(pointB.x, pointB.y);
+		this.dPointA = new Point(pointA.x, pointA.y);
+		this.dPointB = new Point(pointB.x, pointB.y);
 	}
 	toString() {
-		return `[Rectangle (${this.endA.x},${this.endA.y}) to (${this.endB.x},${this.endB.y})]`;
+		return `[Rectangle (${this.dPointA.x},${this.dPointA.y}) to (${this.dPointB.x},${this.dPointB.y})]`;
+	}
+	get area() {
+		return 0;
 	}
 }
 exports.Rectangle = Rectangle;

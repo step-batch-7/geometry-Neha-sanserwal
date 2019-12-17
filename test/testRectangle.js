@@ -10,4 +10,14 @@ describe("Rectangle", function() {
 			);
 		});
 	});
+	describe("area", function() {
+		it("should give area equal to zero when length is zero ", function() {
+			let rect = new Rectangle({ x: 0, y: 1 }, { x: 0, y: 5 });
+			assert.strictEqual(rect.area, 0);
+		});
+		it("should give area equal to zero when width is zero ", function() {
+			let rect = new Rectangle({ x: 1, y: 0 }, { x: 5, y: 0 });
+			assert.strictEqual(rect.area, 0);
+		});
+	});
 });
