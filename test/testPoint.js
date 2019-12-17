@@ -50,8 +50,9 @@ describe("Point", function() {
 	});
 	describe("clone", function() {
 		let point = new Point(1, 2);
+		let expected = new Point(point.x, point.y);
 		it("should given a copy of the given point", function() {
-			assert.deepStrictEqual(point.clone(), { x: 1, y: 2 });
+			assert.deepStrictEqual(point.clone(), expected);
 		});
 	});
 	describe("findDistanceTo", function() {
