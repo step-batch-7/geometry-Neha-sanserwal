@@ -79,4 +79,12 @@ describe("Circle", function() {
 			assert.ok(!circle.hasPoint(point));
 		});
 	});
+	describe("moveTo", function() {
+		it("should move to given dimensions of point", function() {
+			let circle = new Circle({ x: 1, y: 1 }, 5);
+			let point = new Point(4, 2);
+			let expected = new Circle({ x: 4, y: 2 }, 5);
+			assert.deepStrictEqual(circle.moveTo(point), expected);
+		});
+	});
 });
