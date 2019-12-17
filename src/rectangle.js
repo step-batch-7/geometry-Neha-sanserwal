@@ -12,5 +12,10 @@ class Rectangle {
 		let width = this.dPointB.y - this.dPointA.y;
 		return length * width;
 	}
+	get perimeter() {
+		let length = this.dPointB.x - this.dPointA.x;
+		let width = this.dPointB.y - this.dPointA.y;
+		return 2 * (length + width);
+	}
 }
 exports.Rectangle = Rectangle;

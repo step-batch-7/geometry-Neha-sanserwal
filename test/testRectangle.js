@@ -24,4 +24,11 @@ describe("Rectangle", function() {
 			assert.strictEqual(rect.area, 20);
 		});
 	});
+
+	describe("perimeter", function() {
+		it("should give perimeter when length is zero ", function() {
+			let rect = new Rectangle({ x: 0, y: 1 }, { x: 0, y: 5 });
+			assert.strictEqual(rect.perimeter, 8);
+		});
+	});
 });
