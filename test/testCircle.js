@@ -93,4 +93,21 @@ describe("Circle", function() {
 			assert.deepStrictEqual(circle.moveTo(point), expected);
 		});
 	});
+	describe("Covers", function() {
+		it("should validate if distance of point from circle center less to radius", function() {
+			let circle = new Circle({ x: 1, y: 1 }, 5);
+			let point = new Point(4, 3);
+			assert.ok(circle.covers(point));
+		});
+		it("should invalidate if distance of point from circle center equal to radius", function() {
+			let circle = new Circle({ x: 1, y: 1 }, 5);
+			let point = new Point(4, 5);
+			assert.ok(!circle.covers(point));
+		});
+		it("should invalidate if other is not a point ", function() {
+			let circle = new Circle({ x: 1, y: 1 }, 5);
+			let point = 1;
+			assert.ok(!circle.covers(point));
+		});
+	});
 });

@@ -34,5 +34,11 @@ class Circle {
 		}
 		return new Circle(other, this.radius);
 	}
+	covers(other) {
+		if (!(other instanceof Point)) {
+			return false;
+		}
+		return this.point.findDistanceTo(other) < this.radius;
+	}
 }
 exports.Circle = Circle;
