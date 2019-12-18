@@ -9,9 +9,9 @@ describe("Circle", function() {
 		});
 	});
 	describe("isEqualTo", function() {
-		it("should validate if radius of both circles are equal ", function() {
+		it("should validate if radius and centers of both circles are equal ", function() {
 			let circle1 = new Circle({ x: 2, y: 2 }, 5);
-			let circle2 = new Circle({ x: 0, y: 0 }, 5);
+			let circle2 = new Circle({ x: 2, y: 2 }, 5);
 			assert.ok(circle1.isEqualTo(circle2));
 		});
 		it("should invalidate if radius of both circles are equal not equal", function() {

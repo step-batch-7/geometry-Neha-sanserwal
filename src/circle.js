@@ -12,7 +12,9 @@ class Circle {
 		if (!(other instanceof Circle)) {
 			return false;
 		}
-		return this.radius === other.radius;
+		const areCentersEqual =
+			this.point.x === other.point.x && this.point.y === other.point.y;
+		return areCentersEqual && this.radius === other.radius;
 	}
 	get area() {
 		return Math.PI * Math.pow(this.radius, 2);
