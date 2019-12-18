@@ -128,11 +128,6 @@ describe("Rectangle", function() {
 		});
 	});
 	describe("covers", function() {
-		it("should validated if the point lies inside the rectangle", function() {
-			let rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
-			let point = new Point(1, 1);
-			assert.ok(rect.covers(point));
-		});
 		it("should invalidate if point is on any one side of rectangle", function() {
 			let rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
 			let point = new Point(1, 0);
@@ -158,6 +153,9 @@ describe("Rectangle", function() {
 			assert.ok(rect.covers(point));
 			rect = new Rectangle({ x: 0, y: 0 }, { x: 2, y: 2 });
 			point = new Point(0.1, 0.1);
+			assert.ok(rect.covers(point));
+			rect = new Rectangle({ x: 8, y: 3 }, { x: 6, y: 2 });
+			point = new Point(7, 2.5);
 			assert.ok(rect.covers(point));
 		});
 		it("should invalidate if point is one point of rectangle vertices ", function() {

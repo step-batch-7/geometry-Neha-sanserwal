@@ -47,7 +47,7 @@ class Rectangle {
 	}
 
 	hasPoint(other) {
-		if (!other instanceof Point) {
+		if (!(other instanceof Point)) {
 			return false;
 		}
 		let [dPointA, dPointB] = [this.diag.endA, this.diag.endB];
@@ -59,13 +59,13 @@ class Rectangle {
 	}
 
 	covers(other) {
-		if (!other instanceof Point) {
+		if (!(other instanceof Point)) {
 			return false;
 		}
 		let [dPointA, dPointB] = [this.diag.endA, this.diag.endB];
-		let isXInRange = other.x > dPointA.x && other.x < dPointB.x;
-		let isYInRange = other.y > dPointA.y && other.y < dPointB.y;
-		return isXInRange && isYInRange;
+		let isXInRange = isNumInRange(other.x, dPointA.x, dPointB.x);
+		let isYInRange = isNumInRange(other.y, dPointA.y, dPointB.y);
+		return isXInRange && isYInRange && !this.hasPoint(other);
 	}
 }
 exports.Rectangle = Rectangle;
