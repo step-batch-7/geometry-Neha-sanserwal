@@ -77,10 +77,11 @@ class Line {
 		const line2 = new Line({ x: midX, y: midY }, this.endB);
 		return [line1, line2];
 	}
-	hasPoint(point) {
-		let isXValid = point.x === this.findX(point.y);
-		let isYValid = point.y === this.findY(point.x);
-		return point instanceof Point && isXValid && isYValid;
+	hasPoint(other) {
+		if (!(other instanceof Point)) {
+			return false;
+		}
+		return arePointsCollinear(other, this.endB, this.endA);
 	}
 	findPointFromStart(distance) {
 		let slope = this.slope;
